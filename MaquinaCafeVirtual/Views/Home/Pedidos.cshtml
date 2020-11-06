@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MaquinaCafeVirtual.Models.Pedido>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="color:#fff">LISTA DE PEDIDOS</h1>
+<table class="table" style="color:#fff">
+    <thead>
+        <tr>
+            <th>
+                <b>PRODUTO</b>
+            </th>
+            <th>
+                <b>VALOR PAGO</b>
+            </th>
+            <th>
+                <b>TROCO</b>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Produto.Nome)
+                </td>
+                <td>
+                    @item.ValorPago.ToString().Substring(0, item.ValorPago.ToString().Length - 2),@item.ValorPago.ToString().Substring(item.ValorPago.ToString().Length - 2)
+                </td>
+                <td>
+                    @item.Troco
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

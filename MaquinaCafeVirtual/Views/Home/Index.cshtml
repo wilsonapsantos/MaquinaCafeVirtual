@@ -1,0 +1,34 @@
+﻿@model MaquinaCafeVirtual.Models.Pedido
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4" style="margin-top:110px;"><b>BEM-VINDO(A)!</b></h1>
+    <h6 class="display-4">Selecione a bebida desejada:</h6>
+    <div class="form-group" style="display: inline-block;">
+        <select onchange="BuscarValorBebida();" asp-for="ProdutoId" class="form-control" asp-items="ViewBag.ProdutoId"></select>
+    </div>
+    <div class="form-group" style="display:grid; align-content:center">
+        <div>
+            <span id="valorBebida"></span>
+        </div>
+        <div><input type="text" name="valorMoedas" id="valorMoedas" value="" placeholder="INSIRA AS MOEDAS" disabled="disabled" style="text-align:center" /></div>
+        <div>
+            <span style="color:red" id="msgErro"></span>
+            <span style="color:lawngreen" id="msgSucesso"></span>
+        </div>
+        <div>
+            <span>Moedas:</span>
+            <br />
+            @foreach (var item in ViewBag.Moedas)
+            {
+                <span type="submit" class="dot" onclick="InserirMoeda(@item.Valor)"><b>@item.Valor</b></span>
+            }
+        </div>
+        <div style="margin-top:1%">
+            <button id="btnComprar" onclick="Comprar()" disabled="disabled" type="button" class="btn btn-secondary">COMPRAR</button>
+        </div>
+    </div>
+</div>
